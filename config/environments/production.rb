@@ -84,11 +84,12 @@ config.assets.initialize_on_precompile = false
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  host = 'localhost:3000'                     # Local server
+
   config.action_mailer.default_url_options = { host: host, protocol: 'http' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 
-  host = 'localhost:3000'                     # Local server
 
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
