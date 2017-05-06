@@ -1,7 +1,7 @@
 User.create!(name:  "Example User",
-             email: "example@railstutorial.org",
-             password:              "foobar",
-             password_confirmation: "foobar",
+             email: ENV['ADMIN_EMAIL'],
+             password:              ENV['ADMIN_PASSWORD'],
+             password_confirmation: ENV['ADMIN_PASSWORD'],
              admin:     true,
              activated: true,
              activated_at: Time.zone.now)
@@ -25,3 +25,8 @@ users = User.order(:created_at).take(6)
   content = Faker::Lorem.sentence(5)
   users.each { |user| user.microposts.create!(content: content) }
 end
+
+Season.create!(name: "Primavera", modifier: 8)
+Season.create!(name: "Verano", modifier: 2)
+Season.create!(name: "Otonyo", modifier: 0)
+Season.create!(name: "Invierno", modifier: -10)

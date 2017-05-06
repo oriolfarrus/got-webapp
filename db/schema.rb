@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170401172602) do
+ActiveRecord::Schema.define(version: 20170506194056) do
+
+  create_table "interval_masters", force: :cascade do |t|
+    t.integer  "season_id"
+    t.integer  "universe_id"
+    t.string   "name"
+    t.integer  "order"
+    t.boolean  "finished"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["season_id"], name: "index_interval_masters_on_season_id"
+    t.index ["universe_id"], name: "index_interval_masters_on_universe_id"
+  end
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
@@ -19,6 +31,19 @@ ActiveRecord::Schema.define(version: 20170401172602) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "modifier"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "universes", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
