@@ -4,3 +4,7 @@
 <ul class="users">
   <%= render @universes %>
 </ul>
+
+<% if current_user.admin? %>
+  <%= render 'form' %>
+<% end %>

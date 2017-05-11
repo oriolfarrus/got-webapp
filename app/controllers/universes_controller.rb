@@ -1,13 +1,14 @@
 class UniversesController < ApplicationController
 
-  # before_action :admin_user,     only: :create
+  before_action :admin_user,     only: :create
 
   def index
     @universes = Universe.all
   end
 
   def create
-    @user = User.new(user_params)
+    Universe.create(universe_params)
+    @universes = Universe.all
     render 'index'
   end
 
@@ -16,5 +17,10 @@ class UniversesController < ApplicationController
   def admin_user
     redirect_to(root_url) unless current_user.admin?
   end
+
+
+    def universe_params
+      params.require(:universe).permit(:name)
+    end
 
 end
