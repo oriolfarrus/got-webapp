@@ -1,4 +1,4 @@
-User.create!(name:  "Example User",
+User.create!(name:  "Admin",
              email: ENV['ADMIN_EMAIL'],
              password:              ENV['ADMIN_PASSWORD'],
              password_confirmation: ENV['ADMIN_PASSWORD'],

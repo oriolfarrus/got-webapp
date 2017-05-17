@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506194056) do
+ActiveRecord::Schema.define(version: 20170515182941) do
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "text"
+    t.integer  "vicissitude_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["vicissitude_id"], name: "index_comments_on_vicissitude_id"
+  end
+
+  create_table "houses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "motto"
+    t.integer  "universe_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["universe_id"], name: "index_houses_on_universe_id"
+    t.index ["user_id"], name: "index_houses_on_user_id"
+  end
 
   create_table "interval_masters", force: :cascade do |t|
     t.integer  "season_id"
@@ -60,6 +79,17 @@ ActiveRecord::Schema.define(version: 20170506194056) do
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "vicissitudes", force: :cascade do |t|
+    t.integer  "difficulty"
+    t.text     "status"
+    t.integer  "house_id"
+    t.integer  "interval_master_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["house_id"], name: "index_vicissitudes_on_house_id"
+    t.index ["interval_master_id"], name: "index_vicissitudes_on_interval_master_id"
   end
 
 end
