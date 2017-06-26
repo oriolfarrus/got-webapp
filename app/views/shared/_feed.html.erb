@@ -1,6 +1,5 @@
-<% if @feed_items.any? %>
+<% if current_user.houses.any? %>
   <ol class="microposts">
-    <%= render @feed_items %>
+    <%= render @current_user.houses %>
   </ol>
-  <%= will_paginate @feed_items %>
 <% end %>

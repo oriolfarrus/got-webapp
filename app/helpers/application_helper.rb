@@ -10,4 +10,8 @@ module ApplicationHelper
     end
   end
 
+  def get_universes
+    Universe.all
+  end
+
 end

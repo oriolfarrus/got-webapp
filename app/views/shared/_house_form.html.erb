@@ -1,0 +1,11 @@
+<%= form_for(House.new) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= f.label :name %>
+ <%= f.text_field :name, class: 'form-control' %>
+
+
+ <%= f.collection_select :universe_id, Universe.all, :id, :name %>
+
+ <%= f.submit "Post", class: "btn btn-primary" %>
+
+<% end %>
