@@ -5,9 +5,9 @@ class HousesController < ApplicationController
   end
 
   def create
-    newParams = [:name => params[:house][:name], :universe_id => params[:house][:universe_id], :user_id => current_user.id]
+    #newParams = [:name => params[:house][:name], :universe_id => params[:house][:universe_id], :user_id => current_user.id]
 
-    House.create!(newParams)
+    House.create!(house_params)
 
     #current_user.houses.build(house_params)
     render 'index'
@@ -16,7 +16,7 @@ class HousesController < ApplicationController
   private
 
   def house_params
-    params.require(:house).permit(:name, :universe_id)
+    params.require(:house).permit(:name, :universe_id, :user_id)
   end
 
   # Confirms an admin user.
