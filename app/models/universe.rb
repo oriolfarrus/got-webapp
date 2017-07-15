@@ -1,4 +1,4 @@
 class Universe < ApplicationRecord
-  has_many :IntervalMaster, dependent: :destroy
+  has_many :interval_master, dependent: :destroy
   has_many :houses
 end

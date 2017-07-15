@@ -7,8 +7,8 @@ class HousesController < ApplicationController
   def create
     #newParams = [:name => params[:house][:name], :universe_id => params[:house][:universe_id], :user_id => current_user.id]
 
-    House.create!(house_params)
-
+    house = House.create!(house_params)
+    Vicissitude.create(:house => house, :interval_master => house.universe.interval_master.last)
     #current_user.houses.build(house_params)
     render 'index'
   end
