@@ -1,6 +1,11 @@
-<p><strong><%= @universe.name %></strong></p>
+<p><h1><%= @universe.name %></h1></p>
+<p><h3>Houses</h3>
 <p>
   <% @universe.houses.each do |house| %>
      <%= link_to house.name, house %><br/>
   <%end %>
 </p>
+<p><h3>Interval Master</h3>
+  <% @universe.interval_master.each do |interval_master| %>
+     <%=interval_master.id %> <%= link_to interval_master.name, interval_master %><br/>
+  <%end %>
