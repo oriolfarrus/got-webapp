@@ -13,6 +13,10 @@ class UniversesController < ApplicationController
     render 'index'
   end
 
+  def show
+    @universe = Universe.find(params[:id])
+  end
+
   private
   # Confirms an admin user.
   def admin_user

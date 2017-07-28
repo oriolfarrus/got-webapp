@@ -1,0 +1,6 @@
+<p><strong><%= @universe.name %></strong></p>
+<p>
+  <% @universe.houses.each do |house| %>
+     <%= link_to house.name, house %><br/>
+  <%end %>
+</p>
