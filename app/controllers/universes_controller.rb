@@ -8,7 +8,7 @@ class UniversesController < ApplicationController
 
   def create
     universe = Universe.create(universe_params)
-    IntervalMaster.create(:season => Season.first, :universe => universe)
+    IntervalMaster.create(:season => Season.first, :universe => universe, :name => "Default Name", :finished => false, :order => 0)
     @universes = Universe.all
     render 'index'
   end

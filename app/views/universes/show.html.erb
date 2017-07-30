@@ -6,6 +6,11 @@
   <%end %>
 </p>
 <p><h3>Interval Master</h3>
-  <% @universe.interval_master.each do |interval_master| %>
-     <%=interval_master.id %> <%= link_to interval_master.name, interval_master %><br/>
+  <% list =  @universe.interval_master.order(order: :desc)%>
+  <% list.each do |interval_master| %>
+    <% if interval_master == list.first then %>
+      <%=interval_master.id %> <%= link_to interval_master.name, edit_interval_master_path(interval_master) %><br/>
+     <% else %>
+      <%=interval_master.id %> <%= link_to interval_master.name, interval_master %><br/>
+     <% end %>
   <%end %>
