@@ -18,6 +18,6 @@ class IntervalMasterController < ApplicationController
   private
 
       def interval_master_params
-        params.require(:interval_master).permit(:name)
+        params.require(:interval_master).permit(:name, :season_id)
       end
 end
