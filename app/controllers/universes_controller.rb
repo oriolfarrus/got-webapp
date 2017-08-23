@@ -17,6 +17,12 @@ class UniversesController < ApplicationController
     @universe = Universe.find(params[:id])
   end
 
+  def new_interval
+    @universe = Universe.find(params[:universe_id])
+    IntervalMaster.create(:season_id => params[:season][:season_id], :universe => @universe, :name => params[:name], :finished => false, :order => @universe.interval_master.count)
+    redirect_to(@universe)
+  end
+
   private
   # Confirms an admin user.
   def admin_user

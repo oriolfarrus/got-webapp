@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
+  post '/universe/new_interval', to: 'universes#new_interval'
+
   resources :users
   resources :universes
   resources :account_activations, only: [:edit]

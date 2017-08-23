@@ -5,7 +5,7 @@
      <%= link_to house.name, house %><br/>
   <%end %>
 </p>
-<p><h3>Interval Master</h3>
+<p><h3>Intervals List</h3>
   <% list =  @universe.interval_master.order(order: :desc)%>
   <% list.each do |interval_master| %>
     <% if interval_master == list.first then %>
@@ -14,3 +14,14 @@
       <%=interval_master.id %> <%= link_to interval_master.name, interval_master %><br/>
      <% end %>
   <%end %>
+<p><h3>Finish current interval</h3>
+    <%= form_tag "/universe/new_interval" do %>
+    Name:
+    <%= text_field_tag(:name) %><br/>
+    <%= hidden_field_tag(:universe_id, @universe.id) %>
+    Season:<br/>
+    <%= collection_select :season, :season_id, Season.all, :id, :name %>
+
+    <%= submit_tag "Finish", class: "btn btn-primary" %>
+    <% end %>
+</p>

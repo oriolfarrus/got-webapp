@@ -15,6 +15,12 @@ class IntervalMasterController < ApplicationController
     @interval_master = IntervalMaster.find(params[:id])
   end
 
+  def create
+    @interval_master = IntervalMaster.create(interval_master_params)
+
+    redirect_to @interval_master
+  end
+
   private
 
       def interval_master_params
