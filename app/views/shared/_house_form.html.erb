@@ -4,7 +4,7 @@
  <%= f.text_field :name, class: 'form-control' %>
 
 <%= f.hidden_field :user_id, :value => current_user.id%>
- <%= f.collection_select :universe_id, Universe.all, :id, :name %>
+ <%= f.collection_select :universe_id, get_remaining_universes, :id, :name %>
 
  <%= f.submit "Post", class: "btn btn-primary" %>
 

@@ -14,4 +14,19 @@ module ApplicationHelper
     Universe.all
   end
 
+  def get_remaining_universes
+    arr = []
+    Universe.all.each do |universe|
+      arr << universe
+    end
+
+    if !current_user.nil? && !current_user.admin?
+        current_user.houses.each do |house|
+            arr.delete(house.universe)
+        end
+    end
+
+    arr
+  end
+
 end

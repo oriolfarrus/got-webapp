@@ -2,7 +2,11 @@ class HousesController < ApplicationController
 
 
   def index
-    @houses = House.all
+    if current_user.admin?
+      @houses = House.all
+    else
+      @houses = House.where(user: current_user)
+    end
   end
 
   def create
@@ -11,7 +15,7 @@ class HousesController < ApplicationController
     house = House.create!(house_params)
     Vicissitude.create(:house => house, :interval_master => house.universe.interval_master.last)
     #current_user.houses.build(house_params)
-    render 'index'
+    redirect_to house
   end
 
   private
