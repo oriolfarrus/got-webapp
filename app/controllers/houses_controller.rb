@@ -9,6 +9,14 @@ class HousesController < ApplicationController
     end
   end
 
+  def show
+    @house = House.find(params[:id])
+
+    if(@house.nil?)
+      redirect_to index
+    end
+  end
+
   def create
     #newParams = [:name => params[:house][:name], :universe_id => params[:house][:universe_id], :user_id => current_user.id]
 
