@@ -12,9 +12,17 @@ class HousesController < ApplicationController
   def show
     @house = House.find(params[:id])
 
+    if (@house.finished.nil?)
+      @house.finished = false
+    end
+
     if(@house.nil?)
       redirect_to index
     end
+  end
+
+  def change_user
+
   end
 
   def create

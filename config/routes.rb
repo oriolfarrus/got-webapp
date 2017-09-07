@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   post '/universe/new_interval', to: 'universes#new_interval'
 
+  post '/house/:id/change_user', to: 'houses#change_user'
+
   resources :users
   resources :universes
   resources :account_activations, only: [:edit]

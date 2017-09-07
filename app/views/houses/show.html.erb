@@ -1,2 +1,20 @@
 <% provide(:title, @house.name) %>
 <h1><%= @house.name %></h1>
+
+<% if !@house.finished %>
+  <h3>Status: Unfinished</h3>
+
+<% end %>
+
+<p>Player: <%=@house.user.name %></p>
+<% if current_user.admin?%>
+  <%= form_tag "/house/#{@house.id}/change_user" do %>
+
+    Change ownership:
+    <%= collection_select :user, :user_id, User.all, :id, :name %>
+
+    <%= submit_tag "Transfer", class: "btn btn-primary" %>
+  <% end %>
+
+<% end %>
+<p>Lema: <%=@house.motto %></p>
